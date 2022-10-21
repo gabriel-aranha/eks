@@ -3,33 +3,6 @@ on:
   workflow_dispatch
 
 jobs:
-  plan:
-    runs-on: ubuntu-latest
-    container: hashicorp/terraform
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-      TF_STATE_BUCKET: ${{ secrets.TF_STATE_BUCKET }}
-      TF_VAR_DATADOG_API_KEY: ${{ secrets.TF_VAR_DATADOG_API_KEY }}
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      
-      - name: Plan Terraform
-        run: |
-          cd terraform
-          terraform version
-          terraform init -backend-config="bucket=$TF_STATE_BUCKET"
-          terraform plan -out=terraform.tfplan
-
-      - name: Upload .tfplan
-        uses: actions/upload-artifact@v2
-        with:
-          name: tfplan
-          path: terraform/terraform.tfplan
-
   apply:
     runs-on: ubuntu-latest
     container: hashicorp/terraform
@@ -44,15 +17,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Download .tfplan
-        uses: actions/download-artifact@v2
-        with:
-          name: tfplan
       
       - name: Apply Terraform
         run: |
           cd terraform
           terraform version
           terraform init -backend-config="bucket=$TF_STATE_BUCKET"
-          terraform apply terraform.tfplan
+          terraform apply -auto-approve
