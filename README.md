@@ -1,1 +1,2 @@
-# eks
+# EKS
+Provision an EKS cluster.

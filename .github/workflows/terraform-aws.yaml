@@ -1,0 +1,28 @@
+jobs:
+  plan:
+    container: hashicorp/terraform
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+      TF_STATE_BUCKET: ${{ secrets.TF_STATE_BUCKET }}
+      TF_VAR_DATADOG_API_KEY: ${{ secrets.TF_VAR_DATADOG_API_KEY }}
+
+    steps:
+      - run: ls
+      - run: cd terraform
+      - run: terraform version
+      - run: terraform init -backend-config="bucket=$TF_STATE_BUCKET"
+      - run: terraform plan -out=terraform.tfplan
+
+  apply:
+    container: hashicorp/terraform
+    needs: plan
+    steps:
+      - run: echo "asdhadpias"
+
+  destroy:
+    container: hashicorp/terraform
+    needs: apply
+    steps:
+      - run: echo "asdhadpias"
