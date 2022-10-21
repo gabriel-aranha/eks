@@ -19,9 +19,9 @@ jobs:
       
       - name: Init Terraform
         run: |
-          ls \
-          cd terraform \
-          terraform version \
+          ls
+          cd terraform
+          terraform version
           terraform init -backend-config="bucket=$TF_STATE_BUCKET"
 
       - name: Plan Terraform
