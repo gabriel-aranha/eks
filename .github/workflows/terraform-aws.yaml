@@ -25,7 +25,7 @@ jobs:
           terraform plan -out=terraform.tfplan
 
       - name: Upload .tfplan
-      - uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2
         with:
           name: tfplan
           path: terraform.tfplan
@@ -47,7 +47,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Download .tfplan
-      - uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v2
         with:
           name: tfplan
       
