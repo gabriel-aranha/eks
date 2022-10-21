@@ -13,11 +13,17 @@ jobs:
       TF_VAR_DATADOG_API_KEY: ${{ secrets.TF_VAR_DATADOG_API_KEY }}
 
     steps:
-      - run: ls
-      - run: cd terraform
-      - run: terraform version
-      - run: terraform init -backend-config="bucket=$TF_STATE_BUCKET"
-      - run: terraform plan -out=terraform.tfplan
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Init Terraform
+        run: ls
+        run: cd terraform
+        run: terraform version
+        run: terraform init -backend-config="bucket=$TF_STATE_BUCKET"
+
+      - name: Plan Terraform
+        run: terraform plan -out=terraform.tfplan
 
   apply:
     runs-on: ubuntu-latest
