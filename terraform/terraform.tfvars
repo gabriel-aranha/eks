@@ -13,23 +13,6 @@ node_groups = {
     }
 }
 helm_charts = {
-    argocd = {
-        name       = "argocd"
-        namespace  = "argocd"
-        repository = "https://argoproj.github.io/argo-helm"
-        chart      = "argo-cd"
-        custom_overrides = [
-            {
-                name = "server.extraArgs"
-            }
-        ]
-        overrides = [
-            {
-                name = "dex.enabled"
-                value = false
-            }
-        ]
-    }
     datadog = {
         name       = "datadog"
         namespace  = "datadog"
