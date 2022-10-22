@@ -20,7 +20,7 @@ helm_charts = {
         chart      = "argo-cd"
         custom_overrides = [
             {
-                name = "extraArgs"
+                name = "server.extraArgs"
             }
         ]
         overrides = [
