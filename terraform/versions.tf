@@ -14,11 +14,5 @@ terraform {
     github = {
       source  = "integrations/github"
     }
-    kubectl = {
-      source  = "gavinbunney/kubectl"
-    }
-    flux = {
-      source  = "fluxcd/flux"
-    }
   }
 }
