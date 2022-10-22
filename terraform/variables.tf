@@ -26,7 +26,7 @@ variable "availability_zones" {
   default     = []
 }
 
-variable "DATADOG_API_KEY" {
+variable "datadog_api_key" {
     type        = string
     description = "Datadog API key"
 }
