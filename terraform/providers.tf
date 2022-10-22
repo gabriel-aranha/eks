@@ -15,3 +15,12 @@ provider "helm" {
     token                  = data.aws_eks_cluster_auth.main.token
   }
 }
+
+provider "github" {
+  owner = var.github_owner
+  token = var.github_token
+}
+
+provider "flux" {}
+
+provider "kubectl" {}

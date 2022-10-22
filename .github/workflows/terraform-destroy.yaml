@@ -12,6 +12,10 @@ jobs:
       AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
       TF_STATE_BUCKET: ${{ secrets.TF_STATE_BUCKET }}
       TF_VAR_datadog_api_key: ${{ secrets.DATADOG_API_KEY }}
+      TF_VAR_github_token: ${{ secrets.GH_TOKEN }}
+      TF_VAR_github_owner: ${{ secrets.GH_OWNER }}
+      GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      GITHUB_OWNER: ${{ secrets.GH_OWNER }}
 
     steps:
       - name: Checkout

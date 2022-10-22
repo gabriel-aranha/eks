@@ -64,3 +64,37 @@ variable "helm_charts" {
     }))
   }))
 }
+
+variable "github_owner" {
+  type        = string
+  description = "Github owner"
+}
+
+variable "github_token" {
+  type        = string
+  description = "Github token"
+}
+
+variable "repository_name" {
+  type        = string
+  default     = "my-flux-repo"
+  description = "Github repository name"
+}
+
+variable "repository_visibility" {
+  type        = string
+  default     = "private"
+  description = "How visible is the github repo"
+}
+
+variable "branch" {
+  type        = string
+  default     = "main"
+  description = "Branch name"
+}
+
+variable "target_path" {
+  type        = string
+  default     = "my-cluster"
+  description = "Flux sync target path"
+}
