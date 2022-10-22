@@ -9,14 +9,14 @@ resource "github_branch_default" "main" {
   branch     = var.branch
 }
 
-resource "github_repository_file" "install" {
+resource "github_repository_file" "flux_install" {
   repository = github_repository.main.name
   file       = data.flux_install.main.path
   content    = data.flux_install.main.content
   branch     = var.branch
 }
 
-resource "github_repository_file" "sync" {
+resource "github_repository_file" "flux_sync" {
   repository = github_repository.main.name
   file       = data.flux_sync.main.path
   content    = data.flux_sync.main.content
