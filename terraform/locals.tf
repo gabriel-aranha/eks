@@ -4,14 +4,4 @@ locals {
   custom_overrides = {
     "datadog.apiKey" = var.datadog_api_key
   }
-  flux_install = [ for v in data.kubectl_file_documents.flux_install.documents : {
-      data: yamldecode(v)
-      content: v
-    }
-  ]
-  flux_sync = [ for v in data.kubectl_file_documents.flux_sync.documents : {
-      data: yamldecode(v)
-      content: v
-    }
-  ]
 }
