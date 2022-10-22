@@ -21,10 +21,6 @@ helm_charts = {
         custom_overrides = []
         overrides = [
             {
-                name = "server.extraArgs"
-                value = "{--insecure, --auth-mode=server}"
-            },
-            {
                 name = "dex.enabled"
                 value = false
             }
