@@ -54,3 +54,22 @@ resource "aws_iam_role_policy_attachment" "ec2_container_registry_policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
   role       = aws_iam_role.eks_node_role.name
 }
+
+data "aws_iam_user" "read_only_access_user" {
+  user_name = "readonlyaccess"
+}
+
+resource "aws_iam_user_policy" "eks_cluster_access" {
+  user   = aws_iam_user.lb.name
+  name   = aws_eks_cluster.main.name
+  policy = data.aws_iam_policy_document.eks_cluster_access_policy.json
+}
+
+data "aws_iam_policy_document" "eks_cluster_access_policy" {
+  statement {
+      actions = [
+          "eks:DescribeCluster"
+      ]
+      resources = [aws_eks_cluster.main.arn]
+  }
+}
