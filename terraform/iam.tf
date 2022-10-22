@@ -60,7 +60,7 @@ data "aws_iam_user" "read_only_access_user" {
 }
 
 resource "aws_iam_user_policy" "eks_cluster_access" {
-  user   = aws_iam_user.read_only_access_user.name
+  user   = data.aws_iam_user.read_only_access_user.name
   name   = aws_eks_cluster.main.name
   policy = data.aws_iam_policy_document.eks_cluster_access_policy.json
 }
