@@ -21,7 +21,7 @@ helm_charts = {
         custom_overrides = []
         overrides = [
             {
-                name = "server.extraArgs[0]"
+                name = "server.extraArgs"
                 value = "--auth-mode=server"
             }
         ]
