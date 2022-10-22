@@ -55,12 +55,8 @@ resource "aws_iam_role_policy_attachment" "ec2_container_registry_policy" {
   role       = aws_iam_role.eks_node_role.name
 }
 
-data "aws_iam_user" "read_only_access_user" {
-  user_name = "readonlyaccess"
-}
-
 resource "aws_iam_user_policy" "eks_cluster_access" {
-  user   = data.aws_iam_user.read_only_access_user.name
+  user   = "readonlyaccess"
   name   = aws_eks_cluster.main.name
   policy = data.aws_iam_policy_document.eks_cluster_access_policy.json
 }
