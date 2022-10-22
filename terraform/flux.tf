@@ -25,10 +25,6 @@ data "kubectl_file_documents" "flux_install" {
 resource "kubectl_manifest" "flux_install" {
   for_each  = data.kubectl_file_documents.flux_install.manifests
   yaml_body = each.value
-
-  depends_on = [
-    kubernetes_namespace.flux_system
-  ]
 }
 
 data "flux_sync" "main" {
@@ -43,10 +39,6 @@ data "kubectl_file_documents" "flux_sync" {
 resource "kubectl_manifest" "flux_sync" {
   for_each   = data.kubectl_file_documents.flux_sync.manifests
   yaml_body = each.value
-
-  depends_on = [
-    kubernetes_namespace.flux_system
-  ]
 }
 
 resource "kubernetes_secret" "main" {
