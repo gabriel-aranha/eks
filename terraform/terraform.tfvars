@@ -19,7 +19,12 @@ helm_charts = {
         repository = "https://argoproj.github.io/argo-helm"
         chart      = "argo-cd"
         custom_overrides = []
-        overrides = []
+        overrides = [
+            {
+                name = "server.extraArgs"
+                value = "--auth-mode=server"
+            }
+        ]
     }
     datadog = {
         name       = "datadog"
