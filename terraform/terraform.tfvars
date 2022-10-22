@@ -18,7 +18,11 @@ helm_charts = {
         namespace  = "argocd"
         repository = "https://argoproj.github.io/argo-helm"
         chart      = "argo-cd"
-        custom_overrides = []
+        custom_overrides = [
+            {
+                name = "extraArgs"
+            }
+        ]
         overrides = [
             {
                 name = "dex.enabled"
