@@ -14,6 +14,10 @@ resource "kubernetes_config_map" "aws_auth" {
     ])
   }
 
+  lifecycle {
+    ignore_changes = all
+  }
+
   depends_on = [
     aws_eks_cluster.main
   ]
