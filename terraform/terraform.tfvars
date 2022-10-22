@@ -22,7 +22,7 @@ helm_charts = {
         overrides = [
             {
                 name = "server.extraArgs"
-                value = "--auth-mode=server"
+                value = "{--auth-mode=server}"
             }
         ]
     }
