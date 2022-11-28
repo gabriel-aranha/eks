@@ -13,25 +13,25 @@ node_groups = {
     }
 }
 helm_charts = {
-    datadog = {
-        name       = "datadog"
-        namespace  = "datadog"
-        repository = "https://helm.datadoghq.com"
-        chart      = "datadog"
-        custom_overrides = [
-            {
-                name = "datadog.apiKey"
-            }
-        ]
-        overrides = [
-            {
-                name = "datadog.logs.enabled"
-                value = true
-            },
-            {
-                name = "datadog.logs.containerCollectAll"
-                value = true
-            }
-        ]
-    }
+    #datadog = {
+    #    name       = "datadog"
+    #    namespace  = "datadog"
+    #    repository = "https://helm.datadoghq.com"
+    #    chart      = "datadog"
+    #    custom_overrides = [
+    #        {
+    #            name = "datadog.apiKey"
+    #        }
+    #    ]
+    #    overrides = [
+    #        {
+    #            name = "datadog.logs.enabled"
+    #            value = true
+    #        },
+    #        {
+    #            name = "datadog.logs.containerCollectAll"
+    #            value = true
+    #        }
+    #    ]
+    #}
 }
